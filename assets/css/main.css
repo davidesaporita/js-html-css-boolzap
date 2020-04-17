@@ -11,6 +11,21 @@ body {
     color: #333;
 }
 
+/* Typography */
+h4 {
+    padding-bottom: 6px;
+}
+
+h5 {
+    font-weight: 400;
+}
+
+.fas {
+    color: #B1B1B1;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
 /* layout */
 #app {
     display: flex;
@@ -39,6 +54,7 @@ body {
     flex-direction: column;
     width: 35%;
     height: 100%;
+    border-right: 1px solid #DADBD3;
 }
 
 .content {
@@ -57,21 +73,59 @@ footer {
     padding: 8px;
 }
 
+.content header {
+    display: block;
+}
+
+/* Images */
 img.avatar {
     width: 50px;
     height: auto;
     border-radius: 50%;
 }
 
-.contact img.avatar {
+.chat-list img.avatar {
     width: 60px;
+    margin-right: 20px;
+}
+
+/* Contact (valgono per sidebar e header content) */
+.contact-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact .last-msg,
+.contact .last-msg-time {
+    color: #B6B9BB;
+}
+
+.contact .last-msg-time {
+    font-size: 12px;
+}
+
+.chat-list .contact {
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+.icons {
+    padding-right: 10px;
+}
+
+.chat-list .contact {
+    padding-left: 16px;
+    padding-right: 8px;
 }
 
 /* Sidebar */
-.sidebar .header {
-    
-} 
-
 .sidebar .alert {
     height: 75px;
     background-color: #8EDAFD;
@@ -84,27 +138,19 @@ img.avatar {
 .sidebar .chat-list {
     flex-grow: 1;
     background-color: #fff;
+    list-style: none;
     overflow-y: scroll;
 }
 
-.sidebar .chat-list .contact {
-    padding-left: 16px;
-    padding-right: 8px;
+.sidebar .chat-list li {
+    height: 76px;
+}
+
+.sidebar .chat-list li:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,.03);
 }
 
 /* Active chat */
-.content .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.content .header .contact-data {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .content .chat {
     flex-grow: 1;
     background-image: url('../img/mine.jpg');
