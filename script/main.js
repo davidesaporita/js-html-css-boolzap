@@ -11,3 +11,48 @@
  * 
  */
 
+$(document).ready(function () {
+    
+    var chat = $('.message-list');
+    
+    $('#app').on('focus','#new-input', () => { 
+        toggleMic();
+    });
+
+    $('#app').on('click','.send', () => {
+        var template = $('.chat-template .msg.msg--sent').clone();
+        var newMsg = $('#new-input').val().trim();
+        chat.append(template.append(newMsg));
+        toggleMic();
+        $('#new-input').val('');
+    });
+
+    $('#new-input').keyup(function(e) {
+        if(e.which === 13 || e.keyCode === 13) {
+            var text = $(this).val().trim();
+            if(text !== '') {
+                var template = $('.chat-template .msg.msg--sent').clone();
+                var newMsg = $('#new-input').val().trim();
+                chat.append(template.append(newMsg));
+                $('#new-input').val('');
+            }
+        }
+    });
+
+    function addElement(text) {
+        var text = $(this).val().trim();
+        if(text !== '') {
+            var template = $('.chat-template .msg.msg--sent').clone();
+            var newMsg = $('#new-input').val().trim();
+            chat.append(template.append(newMsg));
+            toggleMic();
+            $('#new-input').val('');
+        }
+    }
+
+    function toggleMic() {
+        $('.rec').toggle();
+        $('.send').toggle();
+    }
+
+});

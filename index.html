@@ -161,11 +161,9 @@
                         <ul class="message-list">
                             <li class="msg msg--sent">Ciao come stay?</li>
                             <li class="msg msg--received">Sto lavorando, lasciamy in pace</li>
-                            <li class="msg msg--sent">Vabbene scusamy tanto :(</li>
-                            <li class="msg msg--sent">Allora sai che ti dico?</li>
-                            <li class="msg msg--received">Non mi dire niente e leggiti questa poesia che ho scritto l'altro yesterday:</li>
-                            <li class="msg msg--received"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, similique. Ut doloremque reprehenderit fugiat eius veniam fuga libero saepe id quae, ullam a voluptatem sed natus blanditiis repellat sequi! Ipsam?</i></li>
-                            <li class="msg msg--sent">Che bella, grazie mille!</li>
+                            <li class="msg msg--sent">Vabbene scusamy tanto :( Volevo farti leggere questa poesia che ho scritto l'altro yesterday:</li>
+                            <li class="msg msg--sent"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, similique. Ut doloremque reprehenderit fugiat eius veniam fuga libero saepe id quae, ullam a voluptatem sed natus blanditiis repellat sequi! Ipsam?</i></li>
+                            <li class="msg msg--received">Che bella, grazie mille!</li>
                         </ul>
                     </div>
                 </main>
@@ -175,7 +173,7 @@
                         <i class="far fa-smile"></i>
                     </div>
                     <div class="text-input">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input id="new-input" type="text" placeholder="Scrivi un messaggio">
                     </div>
                     <div class="actions right">
                         <i class="rec fas fa-microphone"></i>
@@ -185,6 +183,16 @@
             </section>
         </div>
     </div>
+
+    <!-- Chat Template -->
+    <div class="chat-template">
+        <li class="msg msg--sent"></li>    
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
     <script src="script/main.js"></script>
 </body>
 </html>
