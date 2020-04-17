@@ -201,6 +201,28 @@ img.avatar {
     background-image: url('../img/mine.jpg');
 }
 
+.content .chat .message-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.chat {
+    padding-top: 65px;
+}
+
+.chat .msg {
+    padding: 10px 80px;
+}
+
+.chat .msg--sent {
+    align-self: flex-end;
+}
+
+.chat .msg--received {
+    align-self: flex-start;
+}
+
 .content .new-message {
     display: flex;
     background-color: #F3EEEB;
@@ -233,4 +255,6 @@ img.avatar {
 .content .new-message .actions .far {
     text-align: center;
     padding: 0 30px;
+    color: #6B7376;
+    font-size: 24px;
 }
