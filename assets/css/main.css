@@ -10,3 +10,76 @@ body {
     font-family: 'Lato', sans-serif;
     color: #333;
 }
+
+/* layout */
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #039688 0%,
+        #039688 15%,
+        #DADBD3 15%,
+        #DADBD3 100%
+    );
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    min-width: 900px;
+    height: 95%;
+    background-color: #E5DDD5;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width:  65%;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar .header {
+    
+} 
+
+.sidebar .alert {
+    background-color: #8EDAFD;
+}
+
+.sidebar .search {
+    background-color: #FAFAFA;
+}
+
+.sidebar .chat-list {
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+/* Active chat */
+.content .header .active-contact {
+    
+}
+
+.content .chat {
+    flex-grow: 1;
+    background-image: url('../img/mine.jpg');
+}
+
+.content .new-message {
+    display: flex;
+}
+
+.content .new-message input {
+    flex-grow: 1;
+}
