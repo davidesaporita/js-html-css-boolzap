@@ -20,10 +20,16 @@ h5 {
     font-weight: 400;
 }
 
+h5.last-access {
+    font-weight: 600;
+    color: #6B7376;
+}
+
 .fas {
     color: #B1B1B1;
-    padding: 0 5px;
+    padding: 0 7px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 /* layout */
@@ -82,11 +88,12 @@ img.avatar {
     width: 50px;
     height: auto;
     border-radius: 50%;
+    margin-right: 12px;
 }
 
 .chat-list img.avatar {
     width: 60px;
-    margin-right: 20px;
+    margin-right: 18px;
 }
 
 /* Contact (valgono per sidebar e header content) */
@@ -127,8 +134,33 @@ img.avatar {
 
 /* Sidebar */
 .sidebar .alert {
-    height: 75px;
+    display: flex;
+    align-items: center;
+    min-height: 75px;
     background-color: #8EDAFD;
+    padding-left: 16px;
+}
+
+.sidebar .alert .bell-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #F2FBFF;
+    margin-right: 12px;
+}
+
+.sidebar .alert .bell-icon i {
+    font-size: 25px;
+    color: #8EDAFD;
+}
+
+.sidebar .alert h5 {
+    color: #555;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .sidebar .search {
@@ -144,6 +176,10 @@ img.avatar {
 
 .sidebar .chat-list li {
     height: 76px;
+}
+
+.sidebar .chat-list li.active {
+    background-color: #E9EBEB;
 }
 
 .sidebar .chat-list li:not(:last-child) {
