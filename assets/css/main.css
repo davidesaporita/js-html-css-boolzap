@@ -20,8 +20,8 @@ body {
     background: linear-gradient(
         to bottom,
         #039688 0%,
-        #039688 15%,
-        #DADBD3 15%,
+        #039688 150px,
+        #DADBD3 150px,
         #DADBD3 100%
     );
 }
@@ -31,7 +31,7 @@ body {
     width: 90%;
     min-width: 900px;
     height: 95%;
-    background-color: #E5DDD5;
+    background-color: #EAEAEA;
 }
 
 .sidebar {
@@ -48,12 +48,31 @@ body {
     height: 100%;
 }
 
+header,
+footer {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    padding: 8px;
+}
+
+img.avatar {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.contact img.avatar {
+    width: 60px;
+}
+
 /* Sidebar */
 .sidebar .header {
     
 } 
 
 .sidebar .alert {
+    height: 75px;
     background-color: #8EDAFD;
 }
 
@@ -64,6 +83,12 @@ body {
 .sidebar .chat-list {
     flex-grow: 1;
     background-color: #fff;
+    overflow-y: scroll;
+}
+
+.sidebar .chat-list .contact {
+    padding-left: 16px;
+    padding-right: 8px;
 }
 
 /* Active chat */
@@ -78,6 +103,7 @@ body {
 
 .content .new-message {
     display: flex;
+    background-color: #F3EEEB;
 }
 
 .content .new-message input {
