@@ -51,6 +51,7 @@ body {
 header,
 footer {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 65px;
     padding: 8px;
@@ -92,8 +93,16 @@ img.avatar {
 }
 
 /* Active chat */
-.content .header .active-contact {
-    
+.content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .header .contact-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content .chat {
