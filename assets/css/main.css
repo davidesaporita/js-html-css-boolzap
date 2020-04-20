@@ -220,6 +220,7 @@ img.avatar {
 .content .chat {
     flex-grow: 1;
     background-image: url('../img/mine.jpg');
+    overflow-y: auto;
 }
 
 .content .chat .message-list {

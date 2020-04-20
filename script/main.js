@@ -18,22 +18,29 @@ $(document).ready(function () {
     var sendIcon = $('#actions--send');
     var sendInput = $('#new-input');
     var activeChat = $('.active-chat');
+    var chatWindow = $('.chat');
     var chatId = activeChat.attr('data-conversation');
     
     // Modifica icona da microfono ad aereo di carta
     app.on('blur focus','#new-input', toggleSendIcon);
 
-    // Invia un messaggio al click dell'icona
+    // Chiama la funzione di invio messaggio al click dell'icona
     app.on('click','#actions--send', () => {
         sendMessage(chatId);
     });
 
+    // Chiama la funzione di invio messaggio una volta premuto enter nell'input
     app.on('keyup','#new-input', (e) => {
         if(e.which === 13 || e.keyCode === 13) {
             sendMessage(chatId);
         }
     });
     
+
+    /********** FUNZIONI ************/
+    /********** CHE *****************/
+    /********** FUNZIONANO **********/
+
     function toggleSendIcon() {
         sendIcon.toggleClass('fa-microphone fa-paper-plane');
     }
@@ -58,6 +65,9 @@ $(document).ready(function () {
 
             // Pulisci contenuto del value nell'input del nuovo messaggio
             clearInput(sendInput);
+
+            // Scroll fino all'ultimo elemento aggiunto
+            chatWindow.scrollTop(chatWindow.height() + newMsg.height());
         }
     }
 
