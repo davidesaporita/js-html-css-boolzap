@@ -25,12 +25,6 @@ $(document).ready(function () {
     var activeChat = $('.active-chat');
     var chatWindow = $('.chat');
     var chatId = activeChat.attr('data-conversation');
-
-    // Costruisco un array con tutti i nomi dei contatti con cui sono presenti delle chat
-    var contactsNames = [];
-    $('.name').each( function() {
-        contactsNames.push($(this).text());
-    });
     
     // Modifica icona da microfono ad aereo di carta
     app.on('blur focus','#new-input', toggleSendIcon);
@@ -64,18 +58,24 @@ $(document).ready(function () {
     // Ricerca di un contatto
     app.on('keyup','#boolzap-search', function() {
 
-        // Elemento di ricerca
-        var string = searchInput.val().trim().toLowerCase();
-        
         // Nascondi tutte le chat
         $('.contact').hide();
 
-        // Mostra il contatto se rientra  nelle condizioni di ricerca
-        for(var i = 0; i < contactsNames.length; i++) {
-           if(contactsNames[i].toLowerCase().includes(string)) {
-                $('li.contact:has(.name:contains("' + contactsNames[i] + '"))').show();               
-           } 
-        }
+        // Elemento di ricerca
+        var string = searchInput.val().trim();
+
+        // Controllo per ogni contatto della lista
+        $('.chat-list .contact').each( function() {
+
+            // Selezione del nome del contatto
+            var tempName = $(this).find('.name').text();
+
+            // Controllo che la stringa di ricerca sia presente nel nome del contatto e mostro il relativo elemento del DOM
+            if(tempName.toLowerCase().includes(string.toLowerCase())) {
+                $(this).show();
+            }
+
+        });
 
     });
     
