@@ -33,6 +33,12 @@ h5.last-access {
     font-size: 20px;
 }
 
+/* Utilities */
+.chat-template {
+    display: none;
+}
+
+
 /* layout */
 #app {
     display: flex;
@@ -59,7 +65,7 @@ h5.last-access {
 .sidebar {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    flex-basis: 35%;
     height: 100%;
     border-right: 1px solid #DADBD3;
 }
@@ -67,7 +73,7 @@ h5.last-access {
 .content {
     display: flex;
     flex-direction: column;
-    width:  65%;
+    flex-basis: 65%;
     height: 100%;
 }
 
@@ -76,7 +82,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
+    flex-basis: 65px;
+    flex-shrink: 0;
     padding: 8px;
 }
 
@@ -166,21 +173,36 @@ img.avatar {
 
 .sidebar .search {
     background-color: #FAFAFA;
+    height: 50px;
+    max-height: 50px;
+}
+
+.sidebar .search > div {
+    display: flex;
+    align-items: center;
+    width: 97%;
+    margin: 1.5%;
+    border: 1px solid rgba(0,0,0,.05);
+}
+
+.sidebar .search i {
+    padding-left: 24px;
 }
 
 .sidebar .search input {
-    width: 97%;
-    padding: 12px;
-    margin: 1.5%;
+    margin-left: 24px;
+    padding: 8px;
     outline: none;
-    border: 1px solid rgba(0,0,0,.05);
+    border: none;
+    background-color: #FAFAFA;
+    width: 90%;
 }
 
 .sidebar .chat-list {
     flex-grow: 1;
     background-color: #fff;
     list-style: none;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .sidebar .chat-list li {
@@ -212,11 +234,12 @@ img.avatar {
 }
 
 .chat .msg {
+    position: relative;
     width: auto;
     max-width: 450px;
     height: auto;
     margin: 10px 80px;
-    padding: 20px 20px;
+    padding: 18px 18px 20px 18px;
     border-radius: 10px;
     font-weight: 700;
     font-size: 14px;
@@ -232,6 +255,29 @@ img.avatar {
     background-color: #fff;
 }
 
+.chat .msg--actions {
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+}
+
+.chat .msg--actions:hover {
+    opacity: 1;
+}
+
+.chat .msg--text {
+    padding-right: 28px;
+}
+
+.chat .msg--time {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 10px;
+    color: #B6B9BB;
+}
+
 .content .new-message {
     display: flex;
     background-color: #F3EEEB;
@@ -244,7 +290,7 @@ img.avatar {
 .content .new-message input {
     width: 97%;
     padding: 12px;
-    margin: 1.5%;
+    margin: 0 1.5%;
     outline: none;
     border: 1px solid rgba(0,0,0,.05);
 }

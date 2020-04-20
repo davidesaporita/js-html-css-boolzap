@@ -20,9 +20,9 @@
                 <header class="header">
                     <img class="avatar" src="assets\img\avatar_io.jpg" alt="Boolzap user avatar">
                     <div>
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                        <a href="#"><i class="fas fa-circle-notch"></i></a>
+                        <a href="#"><i class="fas fa-comment-alt"></i></a>
+                        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                     </div>
                 </header>
                 <div class="alert">
@@ -35,10 +35,15 @@
                     </div>
                 </div>
                 <div class="search">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <div>
+                        <label class="search-icon" for="boolzap-search">
+                            <i class="fas fa-search"></i>
+                        </label>
+                        <input type="text" id="boolzap-search" name="boolzap-search" placeholder="Cerca o inizia una nuova chat">
+                    </div>
                 </div>
                 <ul class="chat-list">
-                    <li class="contact active">
+                    <li class="contact active" data-conversation="0">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_1.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -50,7 +55,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="1">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_2.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -62,7 +67,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="2">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_3.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -74,7 +79,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="3">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_4.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -86,7 +91,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="4">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_5.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -98,7 +103,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="5">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_6.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -110,7 +115,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="6">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_7.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -122,7 +127,7 @@
                             <span class="time">17:63</span>
                         </div>
                     </li>
-                    <li class="contact">
+                    <li class="contact" data-conversation="7">
                         <div class="contact-data">
                             <img class="avatar" src="assets\img\avatar_8.jpg" alt="Boolzap user avatar">
                             <div class="info">
@@ -149,21 +154,53 @@
                             </div>
                         </div>
                         <div class="icons">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-paperclip"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <a href="#"><i class="fas fa-search"></i></a>
+                            <a href="#"><i class="fas fa-paperclip"></i></a>
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                         </div>
                     </div>                      
                 </header>
 
                 <main class="chat">
                     <div>
-                        <ul class="message-list">
-                            <li class="msg msg--sent">Ciao come stay?</li>
-                            <li class="msg msg--received">Sto lavorando, lasciamy in pace</li>
-                            <li class="msg msg--sent">Vabbene scusamy tanto :( Volevo farti leggere questa poesia che ho scritto l'altro yesterday:</li>
-                            <li class="msg msg--sent"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, similique. Ut doloremque reprehenderit fugiat eius veniam fuga libero saepe id quae, ullam a voluptatem sed natus blanditiis repellat sequi! Ipsam?</i></li>
-                            <li class="msg msg--received">Che bella, grazie mille!</li>
+                        <ul class="message-list active-chat" data-conversation="0">
+                            <li class="msg msg--sent">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Ciao come stay?</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                            <li class="msg msg--received">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Sto lavorando, lasciamy in pace</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                            <li class="msg msg--sent">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Vabbene scusamy tanto :( Volevo farti leggere questa poesia che ho scritto l'altro yesterday:</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                            <li class="msg msg--sent">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, similique. Ut doloremque reprehenderit fugiat eius veniam fuga libero saepe id quae, ullam a voluptatem sed natus blanditiis repellat sequi! Ipsam?</i></span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                            <li class="msg msg--received">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Che bella, grazie mille!</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                        </ul>
+                        <ul class="message-list" data-conversation="1" style="display:none"> <!-- Temporaneo -->
+                            <li class="msg msg--sent">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Messaggio di guerra</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
+                            <li class="msg msg--received">
+                                <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+                                <span class="msg--text">Messaggio di pace</span>
+                                <span class="msg--time">15:20</span>
+                            </li>
                         </ul>
                     </div>
                 </main>
@@ -176,8 +213,7 @@
                         <input id="new-input" type="text" placeholder="Scrivi un messaggio">
                     </div>
                     <div class="actions right">
-                        <i class="rec fas fa-microphone"></i>
-                        <i class="send fas fa-paper-plane"></i>
+                        <i id="actions--send" class="fas fa-microphone"></i>
                     </div>
                 </footer>
             </section>
@@ -186,7 +222,11 @@
 
     <!-- Chat Template -->
     <div class="chat-template">
-        <li class="msg msg--sent"></li>    
+        <li class="msg">
+            <span class="msg--actions"><i class="fas fa-chevron-down"></i></span>
+            <span class="msg--text"></span>
+            <span class="msg--time"></span>
+        </li>
     </div>
     
 

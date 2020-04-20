@@ -13,46 +13,104 @@
 
 $(document).ready(function () {
     
+    var app = $('#app');
     var chat = $('.message-list');
+    var sendIcon = $('#actions--send');
+    var sendInput = $('#new-input');
+    var activeChat = $('.active-chat');
+    var chatId = activeChat.attr('data-conversation');
     
-    $('#app').on('focus','#new-input', () => { 
-        toggleMic();
+    // Modifica icona da microfono ad aereo di carta
+    app.on('blur focus','#new-input', toggleSendIcon);
+
+    // Invia un messaggio al click dell'icona
+    app.on('click','#actions--send', () => {
+        sendMessage(chatId);
+        clearInput(sendInput);
     });
 
-    $('#app').on('click','.send', () => {
-        var template = $('.chat-template .msg.msg--sent').clone();
-        var newMsg = $('#new-input').val().trim();
-        chat.append(template.append(newMsg));
-        toggleMic();
-        $('#new-input').val('');
-    });
-
-    $('#new-input').keyup(function(e) {
+    app.on('keyup','#new-input', (e) => {
         if(e.which === 13 || e.keyCode === 13) {
-            var text = $(this).val().trim();
-            if(text !== '') {
-                var template = $('.chat-template .msg.msg--sent').clone();
-                var newMsg = $('#new-input').val().trim();
-                chat.append(template.append(newMsg));
-                $('#new-input').val('');
-            }
+            sendMessage(chatId);
+            clearInput(sendInput);
         }
     });
+    
+    //$('#new-input').keyup(function(e) {
+        //     if(e.which === 13 || e.keyCode === 13) {
 
-    function addElement(text) {
-        var text = $(this).val().trim();
-        if(text !== '') {
-            var template = $('.chat-template .msg.msg--sent').clone();
-            var newMsg = $('#new-input').val().trim();
-            chat.append(template.append(newMsg));
-            toggleMic();
-            $('#new-input').val('');
+    // $('#app').on('click','.send', () => {
+    //     var template = $('.chat-template .msg.msg--sent').clone();
+    //     var newMsg = $('#new-input').val().trim();
+    //     chat.append(template.append(newMsg));
+    //     toggleMic();
+    //     $('#new-input').val('');
+    // });
+
+
+    // $('#new-input').keyup(function(e) {
+    //     if(e.which === 13 || e.keyCode === 13) {
+    //         var text = $(this).val().trim();
+    //         if(text !== '') {
+    //             var template = $('.chat-template .msg.msg--sent').clone();
+    //             var newMsg = $('#new-input').val().trim();
+    //             chat.append(template.append(newMsg));
+    //             $('#new-input').val('');
+    //         }
+    //     }
+    // });
+
+    // function addElement(text) {
+    //     var text = $(this).val().trim();
+    //     if(text !== '') {
+    //         var template = $('.chat-template .msg.msg--sent').clone();
+    //         var newMsg = $('#new-input').val().trim();
+    //         chat.append(template.append(newMsg));
+    //         toggleMic();
+    //         $('#new-input').val('');
+    //     }
+    // }
+
+    function toggleSendIcon() {
+        sendIcon.toggleClass('fa-microphone fa-paper-plane');
+    }
+
+    function sendMessage(chatId) {
+        var text = sendInput.val().trim();
+        if(text.length > 0) {
+
+            // Clone del template
+            var newMsg = $('.chat-template .msg').clone();
+
+            // Chat in cui appendere il nuovo messaggio
+            var chat = $('.message-list[data-conversation="' + chatId + '"]');
+
+            // Applicazione testo, orario e classe al clone
+            newMsg.children('.msg--text').text(text);
+            newMsg.children('.msg--time').text(getTime());
+            newMsg.addClass('msg--sent');            
+
+            // Append del clone alla chat attiva
+            activeChat.append(newMsg);
         }
     }
 
-    function toggleMic() {
-        $('.rec').toggle();
-        $('.send').toggle();
+    // Pulizia dell'input
+    function clearInput(ref) {
+        ref.val('');
+    }
+
+    // Generazione orario
+    function getTime() {
+        var date = new Date();
+        var hours = addZero(date.getHours());
+        var minutes = addZero(date.getMinutes());
+        return hours + ':' + minutes;
+    }
+
+    // Supporto a getTime per aggiungere 0 prima di ore/minuti
+    function addZero(num) {
+        return (num < 10 ? ('0' + num) : num);
     }
 
 });
