@@ -9,6 +9,10 @@
  * Messaggi visibili inizialmente sono inseriti statici nell’HTML
  * Usate un template nell’html e clone() per l’ inserimento del messaggio da fare in JS
  * 
+ * MILESTONE 2
+ * Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+ * Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+ * Ricordate che c’è un metodo includes()  anche per le stringhe oltre che per gli array.
  */
 
 $(document).ready(function () {
@@ -26,13 +30,28 @@ $(document).ready(function () {
 
     // Chiama la funzione di invio messaggio al click dell'icona
     app.on('click','#actions--send', () => {
-        sendMessage(chatId);
+        var text = sendInput.val().trim();
+        sendMessage(chatId, text, 'sent');
+        
+        // Risposta automatica
+        setTimeout(() => {
+            console.log('ciao compare');
+            
+        }
+        ,1000);
     });
 
     // Chiama la funzione di invio messaggio una volta premuto enter nell'input
     app.on('keyup','#new-input', (e) => {
         if(e.which === 13 || e.keyCode === 13) {
-            sendMessage(chatId);
+            var text = sendInput.val().trim();
+            sendMessage(chatId, text, 'sent');
+            
+            // Risposta automatica
+            setTimeout(() => {
+                sendMessage(chatId, 'ok', 'received');
+            }
+            ,1000);
         }
     });
     
@@ -45,8 +64,7 @@ $(document).ready(function () {
         sendIcon.toggleClass('fa-microphone fa-paper-plane');
     }
 
-    function sendMessage(chatId) {
-        var text = sendInput.val().trim();
+    function sendMessage(chatId, text, way = 'sent') {
         if(text.length > 0) {
 
             // Clone del template
@@ -58,7 +76,9 @@ $(document).ready(function () {
             // Applicazione testo, orario e classe al clone
             newMsg.children('.msg--text').text(text);
             newMsg.children('.msg--time').text(getTime());
-            newMsg.addClass('msg--sent');            
+
+            if(way == 'sent') newMsg.addClass('msg--sent');
+            else              newMsg.addClass('msg--received');
 
             // Append del clone alla chat attiva
             activeChat.append(newMsg);
@@ -69,6 +89,14 @@ $(document).ready(function () {
             // Scroll fino all'ultimo elemento aggiunto
             chatWindow.scrollTop(chatWindow.height() + newMsg.height());
         }
+    }
+
+    function botAnswer(string = 'ok') {
+        setTimeout(() => {
+            console.log('ciao compare');
+            
+        }
+        ,1000);
     }
 
     // Pulizia dell'input
