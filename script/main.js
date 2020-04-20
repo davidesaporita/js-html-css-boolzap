@@ -63,16 +63,16 @@ $(document).ready(function () {
 
     // Ricerca di un contatto
     app.on('keyup','#boolzap-search', function() {
-        
+
         // Elemento di ricerca
         var string = searchInput.val().trim().toLowerCase();
         
         // Nascondi tutte le chat
         $('.contact').hide();
 
+        // Mostra il contatto se rientra  nelle condizioni di ricerca
         for(var i = 0; i < contactsNames.length; i++) {
            if(contactsNames[i].toLowerCase().includes(string)) {
-                // Applica classe che da' visibilità soltanto alle conversazioni trovate
                 $('li.contact:has(.name:contains("' + contactsNames[i] + '"))').show();               
            } 
         }
