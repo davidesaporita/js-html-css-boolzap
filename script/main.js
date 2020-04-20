@@ -61,7 +61,9 @@ $(document).ready(function () {
         }
     });
 
+    // Ricerca di un contatto
     app.on('keyup','#boolzap-search', function() {
+        
         // Elemento di ricerca
         var string = searchInput.val().trim().toLowerCase();
         
