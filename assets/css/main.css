@@ -38,6 +38,10 @@ h5.last-access {
     display: none;
 }
 
+.show-conversation {
+    display: block;
+}
+
 /* layout */
 #app {
     display: flex;

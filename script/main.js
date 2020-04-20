@@ -19,11 +19,18 @@ $(document).ready(function () {
     
     var app = $('#app');
     var chat = $('.message-list');
+    var searchInput = $('#boolzap-search');
     var sendIcon = $('#actions--send');
     var sendInput = $('#new-input');
     var activeChat = $('.active-chat');
     var chatWindow = $('.chat');
     var chatId = activeChat.attr('data-conversation');
+
+    // Costruisco un array con tutti i nomi dei contatti con cui sono presenti delle chat
+    var contactsNames = [];
+    $('.name').each( function() {
+        contactsNames.push($(this).text());
+    });
     
     // Modifica icona da microfono ad aereo di carta
     app.on('blur focus','#new-input', toggleSendIcon);
@@ -35,8 +42,7 @@ $(document).ready(function () {
         
         // Risposta automatica
         setTimeout(() => {
-            console.log('ciao compare');
-            
+            sendMessage(chatId, 'ok', 'received');
         }
         ,1000);
     });
@@ -53,6 +59,22 @@ $(document).ready(function () {
             }
             ,1000);
         }
+    });
+
+    app.on('keyup','#boolzap-search', function() {
+        // Elemento di ricerca
+        var string = searchInput.val().trim().toLowerCase();
+        
+        // Nascondi tutte le chat
+        $('.contact').hide();
+
+        for(var i = 0; i < contactsNames.length; i++) {
+           if(contactsNames[i].toLowerCase().includes(string)) {
+                // Applica classe che da' visibilità soltanto alle conversazioni trovate
+                $('li.contact:has(.name:contains("' + contactsNames[i] + '"))').show();               
+           } 
+        }
+
     });
     
 
@@ -89,14 +111,6 @@ $(document).ready(function () {
             // Scroll fino all'ultimo elemento aggiunto
             chatWindow.scrollTop(chatWindow.height() + newMsg.height());
         }
-    }
-
-    function botAnswer(string = 'ok') {
-        setTimeout(() => {
-            console.log('ciao compare');
-            
-        }
-        ,1000);
     }
 
     // Pulizia dell'input
