@@ -62,6 +62,20 @@ $(document).ready(function () {
         }
     });
 
+    // Crea dropdown con azione di rimozione del messaggio
+    $('.msg--actions').click(function() {
+        var dropdown = $('.dropdown-actions').clone();
+        $(this).append(dropdown);
+        $('.chat .dropdown-actions').show();
+
+        $('#remove').click( function() {           
+            $(this).parents('.msg').remove();
+        });
+
+    });
+
+    
+
     // Ricerca di un contatto
     app.on('keyup','#boolzap-search', function() {
 
