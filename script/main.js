@@ -71,13 +71,22 @@ $(document).ready(function () {
     app.on('click', '.msg--actions', function() {
         var dropdown = $('.dropdown-actions').clone();
         $(this).append(dropdown);
-        $('.chat .dropdown-actions').show();
+        $('.chat .dropdown-actions').toggle();
         console.log('ciaooo');
 
         $('#remove').click( function() {           
             $(this).parents('.msg').remove();
         });
 
+        $('.msg--actions').click( function(e) {
+            e.stopPropagation();
+            $('.chat .dropdown-actions').toggle();
+        });
+
+        app.click( function(e) {
+            e.stopPropagation();
+            $('.chat .dropdown-actions').toggle();
+        });
     });
 
     
