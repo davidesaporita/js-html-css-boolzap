@@ -31,6 +31,7 @@ $(document).ready(function () {
     var activeChat = $('.active-chat');
     var chatWindow = $('.chat');
     var chatId = activeChat.attr('data-conversation');
+    var contacts = $('.chat-list .contact');
     
     // Modifica icona da microfono ad aereo di carta
     app.on('blur focus','#new-input', toggleSendIcon);
@@ -65,13 +66,13 @@ $(document).ready(function () {
     app.on('keyup','#boolzap-search', function() {
 
         // Nascondi tutte le chat
-        $('.contact').hide();
+        contacts.hide();
 
         // Elemento di ricerca
         var string = $(this).val().trim(); 
 
         // Controllo per ogni contatto della lista
-        $('.chat-list .contact').each( function() {
+        contacts.each(function() {
 
             // Selezione del nome del contatto
             var tempName = $(this).find('.name').text();
