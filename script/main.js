@@ -30,7 +30,6 @@ $(document).ready(function () {
     var sendInput = $('#new-input');
     var activeChat = $('.active-chat');
     var chatWindow = $('.chat');
-    var chatId = activeChat.attr('data-conversation');
     var contacts = $('.chat-list .contact');
     
     // Modifica icona da microfono ad aereo di carta
@@ -38,19 +37,20 @@ $(document).ready(function () {
 
     // Chiama la funzione di invio messaggio al click dell'icona
     app.on('click','#actions--send', () => {
+        var chatId = $('.active-chat').attr('data-conversation');
         var text = sendInput.val().trim();
         sendMessage(chatId, text, 'sent');
         
         // Risposta automatica
         setTimeout(() => {
             sendMessage(chatId, 'ok', 'received');
-        }
-        ,1000);
+        } ,1000);
     });
 
     // Chiama la funzione di invio messaggio una volta premuto enter nell'input
     app.on('keyup','#new-input', (e) => {
         if(e.which === 13 || e.keyCode === 13) {
+            var chatId = $('.active-chat').attr('data-conversation');
             var text = sendInput.val().trim();
             sendMessage(chatId, text, 'sent');
             
@@ -116,7 +116,7 @@ $(document).ready(function () {
     }
 
     function sendMessage(chatId, text, way = 'sent') {
-        if(text.length > 0) {
+        if(text.length > 0) {          
 
             // Clone del template
             var newMsg = $('.chat-template .msg').clone();
@@ -132,7 +132,7 @@ $(document).ready(function () {
             else              newMsg.addClass('msg--received');
 
             // Append del clone alla chat attiva
-            activeChat.append(newMsg);
+            $('.active-chat').append(newMsg);
 
             // Pulisci contenuto del value nell'input del nuovo messaggio
             clearInput(sendInput);
