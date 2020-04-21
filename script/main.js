@@ -13,6 +13,12 @@
  * Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
  * Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
  * Ricordate che c’è un metodo includes()  anche per le stringhe oltre che per gli array.
+ * 
+ * MILESTONE 3
+ * Click sul contatto mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
+ * Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+ * 
+ * 
  */
 
 $(document).ready(function () {
@@ -79,6 +85,28 @@ $(document).ready(function () {
 
     });
     
+    // Mostra chat relativa ad uno specifico contatto
+    app.on('click','.contact', function() {
+        
+        // Lettura dei dati corrispondente al contatto cliccato (data attribute, nome, immagine)
+        var contactId = $(this).attr('data-conversation');
+        var contactImgUrl = $(this).find('.avatar').attr('src');
+        var contactName = $(this).find('.name').text();
+
+        // Si nasconde la chat attualmente attiva e si resetta anche il contatto attivo nella sidebar e nell'header
+        $('.message-list').removeClass('active-chat');
+        $('aside .contact.active').removeClass('active');
+        $('header .contact.active').removeClass('active');
+
+        // Si visualizza la nuova chat si aggiorna il contatto attivo, sia nella sidebar che nell'header
+        $('.message-list[data-conversation="' + contactId + '"]').addClass('active-chat');
+        $(this).addClass('active');
+        $('header .contact').addClass('active');
+        $('header .contact .avatar').attr('src', contactImgUrl);
+        $('header .contact .name').text(contactName);
+
+    });
+
 
     /********** FUNZIONI ************/
     /********** CHE *****************/

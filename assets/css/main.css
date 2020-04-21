@@ -118,6 +118,11 @@ img.avatar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+}
+
+.contact:not(.active):hover { 
+    background-color: #f6f6f6;
 }
 
 .contact .last-msg,
@@ -228,9 +233,13 @@ img.avatar {
 }
 
 .content .chat .message-list {
-    display: flex;
+    display: none;
     flex-direction: column;
     list-style: none;
+}
+
+.content .chat .message-list.active-chat {
+    display: flex;
 }
 
 .chat {
