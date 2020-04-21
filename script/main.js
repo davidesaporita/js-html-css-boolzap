@@ -62,7 +62,7 @@ $(document).ready(function () {
         $('.contact').hide();
 
         // Elemento di ricerca
-        var string = searchInput.val().trim();
+        var string = $(this).val().trim(); 
 
         // Controllo per ogni contatto della lista
         $('.chat-list .contact').each( function() {
