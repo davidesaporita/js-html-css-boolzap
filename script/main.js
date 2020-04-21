@@ -97,12 +97,10 @@ $(document).ready(function () {
         // Si nasconde la chat attualmente attiva e si resetta anche il contatto attivo nella sidebar e nell'header
         $('.message-list').removeClass('active-chat');
         $('aside .contact.active').removeClass('active');
-        $('header .contact.active').removeClass('active');
 
         // Si visualizza la nuova chat si aggiorna il contatto attivo, sia nella sidebar che nell'header
         $('.message-list[data-conversation="' + contactId + '"]').addClass('active-chat');
         $(this).addClass('active');
-        $('header .contact').addClass('active');
         $('header .contact .avatar').attr('src', contactImgUrl);
         $('header .contact .name').text(contactName);
 
