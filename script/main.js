@@ -33,10 +33,15 @@ $(document).ready(function () {
     var contacts = $('.chat-list .contact');
     
     // Modifica icona da microfono ad aereo di carta
-    app.on('blur focus','#new-input', toggleSendIcon);
+    app.on('blur focus', '#new-input', toggleSendIcon);
+
+    // Attiva notifiche desktop
+    app.on('click', '.alert .info > h5', function(){
+        $('.alert').hide(100);
+    });
 
     // Chiama la funzione di invio messaggio al click dell'icona
-    app.on('click','#actions--send', () => {
+    app.on('click', '#actions--send', () => {
         var chatId = $('.active-chat').attr('data-conversation');
         var text = sendInput.val().trim();
         sendMessage(chatId, text, 'sent');
@@ -63,10 +68,11 @@ $(document).ready(function () {
     });
 
     // Crea dropdown con azione di rimozione del messaggio
-    $('.msg--actions').click(function() {
+    app.on('click', '.msg--actions', function() {
         var dropdown = $('.dropdown-actions').clone();
         $(this).append(dropdown);
         $('.chat .dropdown-actions').show();
+        console.log('ciaooo');
 
         $('#remove').click( function() {           
             $(this).parents('.msg').remove();
