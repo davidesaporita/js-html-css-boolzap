@@ -96,13 +96,13 @@ $(document).ready(function () {
 
         // Si nasconde la chat attualmente attiva e si resetta anche il contatto attivo nella sidebar e nell'header
         $('.message-list').removeClass('active-chat');
-        $('aside .contact.active').removeClass('active');
+        $('.contact.active').removeClass('active');
 
-        // Si visualizza la nuova chat si aggiorna il contatto attivo, sia nella sidebar che nell'header
-        $('.message-list[data-conversation="' + contactId + '"]').addClass('active-chat');
+        // Si visualizza la nuova chat e si aggiorna il contatto attivo, sia nella sidebar che nell'header
         $(this).addClass('active');
-        $('header .contact .avatar').attr('src', contactImgUrl);
-        $('header .contact .name').text(contactName);
+        $('.message-list[data-conversation="' + contactId + '"]').addClass('active-chat');
+        $('#speaking-contact .avatar').attr('src', contactImgUrl);
+        $('#speaking-contact .name').text(contactName);
 
     });
 
